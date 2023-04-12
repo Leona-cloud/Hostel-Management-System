@@ -40,6 +40,10 @@ const studentSchema = new mongoose.Schema({
     },
     nextOfKinPhoneNumber: {
         type: String 
+    },
+    paymentVerified: {
+        type: Boolean,
+        default: false
     }
 
 });
