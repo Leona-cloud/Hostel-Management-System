@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config();
+const authentication = require('./routes/authentication')
 
 
 
@@ -8,6 +9,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/api/auth", authentication);
+
 
 
 mongoose
