@@ -1,19 +1,23 @@
 const Hostel = require('../../models/hostel');
 const successResponse = require('../../responses/success-response');
-const errorResponse = require('../../responses/error-response')
+const errorResponse = require('../../responses/error-response');
+const createHostelSchema = require('../../schemas/hostel');
 
 
 const createHostel = async (req, res)=>{
 
     const authenticatedUser = req.user;
+
+    const { error } = createHostelSchema(req.body);
+    if (error) return errorResponse(400, res, [error.message.split(". ")] )
+    
     
     try {
         const { gender, hostelName} = req.body;
         //check if hostel exists
         const checkIfHostelExists = await Hostel.findOne({hostelName, gender});
-        if(checkIfHostelExists){
-            return errorResponse(400, res, 'Hostel already exists');
-        }
+        if(checkIfHostelExists) return errorResponse(400, res, 'Hostel already exists');
+        
         const createHostel = await Hostel.create({
             gender,
             hostelName,
