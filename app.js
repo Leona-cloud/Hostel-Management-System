@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const dotenv = require('dotenv').config();
-const authentication = require('./routes/authentication')
+const authentication = require('./routes/authentication');
+const hostel = require('./routes/hostel')
 
 
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authentication);
+app.use('/api/hostel', hostel);
 
 
 
