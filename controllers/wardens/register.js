@@ -3,7 +3,6 @@ const { signUpSchema } = require('../../schemas/register');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
 const jwtToken = require('../../utils/jwtToken');
-jwt =  require('jose');
 
 
 
