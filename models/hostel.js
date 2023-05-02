@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 const hostelSchema = new mongoose.Schema({
     hostelName: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    hostelGender: {
+    gender: {
         type: String,
         required: true
     },
