@@ -7,12 +7,15 @@ const roomSchema = new mongoose.Schema({
     },
     block: {
         type: String,
-        required: true
     },
     hostelId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Hostel'
     },
+    occupants: {
+        type: Array,
+        default: []
+    }
 });
 
 
