@@ -29,9 +29,27 @@ function  signUpSchema(user){
 };
 
 
+function wardenRegistrationCompletion(warden){
+    const schema = Joi.object({
+        phoneNumber:  Joi.string().length(11).pattern(/^[0-9]+$/).required(),
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+    });
 
+    const options = {
+        abortEarly: false,
+        errors: {
+            wrap: {
+                label: ""
+            },
+        },
+    }
+
+    return schema.validate(warden, options)
+}
 
 
 module.exports = {
-    signUpSchema
+    signUpSchema,
+    wardenRegistrationCompletion
 }
