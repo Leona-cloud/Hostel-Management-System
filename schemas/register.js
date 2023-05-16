@@ -46,10 +46,36 @@ function wardenRegistrationCompletion(warden){
     }
 
     return schema.validate(warden, options)
-}
+};
+
+
+function studentRegistrationCompletion(student){
+    const schema = Joi.object({
+        fullName: Joi.string().required(),
+        gender: Joi.string().required(),
+        phoneNumber: Joi.string().length(11).pattern(/^[0-9]+$/).required(),
+        matricNo: Joi.string().required(),
+        department: Joi.string().required(),
+        nextOfKin: Joi.string().required(),
+        nextOfKinPhoneNumber: Joi.string().length(11).pattern(/^[0-9]+$/).required(),
+    });
+
+    const options = {
+        abortEarly: false,
+        errors: {
+            wrap: {
+                label: ""
+            },
+        },
+    }
+
+    return schema.validate(student, options)
+};
+
 
 
 module.exports = {
     signUpSchema,
-    wardenRegistrationCompletion
+    wardenRegistrationCompletion,
+    studentRegistrationCompletion
 }

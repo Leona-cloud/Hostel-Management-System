@@ -23,12 +23,8 @@ const studentSchema = new mongoose.Schema({
          minlength: 8,
         maxlength: 1024
     },
-    firstName: {
+    fullName: {
         type: String,
-    },
-    lastName: {
-        type: String,
-        
     },
     gender: {
         type: String,
@@ -46,6 +42,9 @@ const studentSchema = new mongoose.Schema({
     hostelId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Hostel'
+    },
+    block: {
+        type: String,
     },
     roomNumber: {
         type: Number,
