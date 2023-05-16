@@ -45,10 +45,8 @@ const studentRegister =  async (req, res)=>{
 
     } catch (error) {
         console.log(error.message);
-        return res.status(500).json({
-            success: false,
-            message: "Student registration failed",
-        });
+        return errorResponse(500, res, 'Student registration failed')
+       
     }
 
 };
