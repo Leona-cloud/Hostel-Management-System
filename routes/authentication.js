@@ -22,7 +22,8 @@ router.post('/warden/update-reg', wardenAuth, wardenRegistrationCompletion );
 //STUDENT
 router.post('/student/register', studentRegister);
 router.post('/student/update-details', studentAuth, completeStudentRegistration);
-router.post('/student/login', studentLogin)
+router.post('/student/login', studentLogin);
+
 
 
 

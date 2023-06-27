@@ -3,6 +3,8 @@ const { signUpSchema } = require('../../schemas/register');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
 const jwtToken = require('../../utils/jwtToken');
+const successResponse = require("../../responses/success-response");
+const errorResponse = require("../../responses/error-response");
 
 
 
@@ -21,7 +23,7 @@ const studentRegister =  async (req, res)=>{
         message: "User with this email already registered",
     }); 
 
-    student = new Student (_.pick(req.body, ['email', 'password', 'confirmPassword']));
+    student = new Student (_.pick(req.body, ['email', 'password', 'confirmPassword', 'matricNo']));
 
     try {
 
