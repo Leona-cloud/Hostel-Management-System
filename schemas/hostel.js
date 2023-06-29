@@ -3,7 +3,8 @@ const Joi = require('joi');
 function createHostelSchema(hostel){
     const schema = Joi.object({
         gender: Joi.string().required(), 
-        hostelName: Joi.string().required()
+        hostelName: Joi.string().required(),
+        fee: Joi.number().required()
       });
 
       const options = {

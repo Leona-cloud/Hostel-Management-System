@@ -13,7 +13,7 @@ const createHostel = async (req, res)=>{
     
     
     try {
-        const { gender, hostelName} = req.body;
+        const { gender, hostelName, fee} = req.body;
         //check if hostel exists
         const checkIfHostelExists = await Hostel.findOne({hostelName, gender});
         if(checkIfHostelExists) return errorResponse(400, res, 'Hostel already exists');
@@ -21,6 +21,7 @@ const createHostel = async (req, res)=>{
         const createHostel = await Hostel.create({
             gender,
             hostelName,
+            fee,
             wardenId: authenticatedUser.id
             });
             await createHostel.save();
