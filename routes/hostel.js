@@ -8,7 +8,7 @@ const createRooms = require('../controllers/hostel/create-rooms');
 const fetchHostels = require('../controllers/hostel/fetch-hostels');
 const fetchRooms = require('../controllers/hostel/fetch-rooms');
 const setupHostel = require('../controllers/students/setup-hostel');
-
+const makePayment = require('../controllers/students/make-payment')
 
 
 router.post('/create', wardenAuth, createHostel);
@@ -16,6 +16,7 @@ router.post('/create-rooms', createRooms);
 router.get('/fetch-hostels', wardenAuth, fetchHostels);
 router.get('/fetch-rooms', fetchRooms);
 router.post('/setup-hostel', studentAuth, setupHostel);
+router.post('/make-payment', studentAuth, makePayment)
 
 
 

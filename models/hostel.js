@@ -15,6 +15,10 @@ const hostelSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Warden',
         required: true
+    },
+    fee: {
+        type: Number,
+        required: true
     }
 });
 
