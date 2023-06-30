@@ -17,6 +17,11 @@ const studentRegister =  async (req, res)=>{
         return res.status(400).json({ message: [error.message.split(". ")] });
     };
 
+    const getDomain = req.body.email.split('@');
+    const studentMail = getDomain.find(domain => domain === 'student.oauife.edu.ng');
+    if(!studentMail)return errorResponse(400, res, 'please use a valid student mail')
+    
+
     let student = await Student.findOne({ email: req.body.email });
     if(student) return res.status(400).json({
         success: false,

@@ -1,7 +1,6 @@
 const Student = require('../../models/student');
 const Transaction = require('../../models/transaction');
 const Hostel = require('../../models/hostel');
-const successResponse = require('../../responses/success-response');
 const errorResponse = require('../../responses/error-response');
 const initializeTransaction = require('../../utils/paystackInitializeTransaction');
 const crypto = require('crypto');
