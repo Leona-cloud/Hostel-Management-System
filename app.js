@@ -3,11 +3,17 @@ const mongoose = require("mongoose");
 const dotenv = require('dotenv').config();
 const authentication = require('./routes/authentication');
 const hostel = require('./routes/hostel');
-const transactions = require('./routes/transactions')
+const transactions = require('./routes/transactions');
+const cors = require("cors");
 
 
 
 const app = express();
+
+app.use(cors({
+  origin: '*'
+}));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
