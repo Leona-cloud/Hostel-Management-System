@@ -17,12 +17,6 @@ const studentSchema = new mongoose.Schema({
         symbol: 1,
         requirementCount: 4
     }),
-    confirmPassword: {
-        type: String,
-        required: true,
-         minlength: 8,
-        maxlength: 1024
-    },
     fullName: {
         type: String,
     },
