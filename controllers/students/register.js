@@ -28,13 +28,12 @@ const studentRegister =  async (req, res)=>{
         message: "User with this email already registered",
     }); 
 
-    student = new Student (_.pick(req.body, ['email', 'password', 'confirmPassword', 'matricNo']));
+    student = new Student (_.pick(req.body, ['email', 'password', 'fullName', 'matricNo']));
 
     try {
 
         const salt = await bcrypt.genSalt(10);
         student.password = await bcrypt.hash(student.password, salt);
-        student.confirmPassword = await bcrypt.hash(student.confirmPassword, salt);
 
         const result = await student.save();
         console.log(result, 'student registration');

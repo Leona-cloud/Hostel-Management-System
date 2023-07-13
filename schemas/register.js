@@ -14,8 +14,8 @@ function  signUpSchema(user){
             symbol: 1,
             requirementCount: 4
         }),
-        confirmPassword: Joi.ref('password'),
-    }) .with('password', 'confirmPassword')
+       
+    })
 
     const options = {
         abortEarly: false,
