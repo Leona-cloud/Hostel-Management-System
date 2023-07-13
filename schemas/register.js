@@ -4,6 +4,7 @@ const PasswordComplexity = require("joi-password-complexity");
 function  signUpSchema(user){
     const schema = Joi.object({
         email: Joi.string().required().trim().lowercase().email(),
+        fullName: Joi.string().required(),
         matricNo: Joi.string(),
         password: new PasswordComplexity({
             min: 8,
@@ -52,7 +53,6 @@ function wardenRegistrationCompletion(warden){
 
 function studentRegistrationCompletion(student){
     const schema = Joi.object({
-        fullName: Joi.string().required(),
         gender: Joi.string().required(),
         phoneNumber: Joi.string().length(11).pattern(/^[0-9]+$/).required(),
         department: Joi.string().required(),
