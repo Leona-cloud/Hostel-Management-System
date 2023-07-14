@@ -1,6 +1,6 @@
 function errorResponse(statusCode, response, message){
     return response.status(statusCode).json({
-        success: true,
+        success: false,
         message,
     })
 };

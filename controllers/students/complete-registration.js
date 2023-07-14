@@ -14,7 +14,7 @@ const completeStudentRegistration = async (req, res) => {
   if (!student) return errorResponse(400, res, "Student does not exist");
 
   const {
-    fullName,
+    image,
     gender,
     phoneNumber,
     department,
@@ -26,7 +26,7 @@ const completeStudentRegistration = async (req, res) => {
 
   try {
     await student.updateOne({ id: authenticatedUser.id }).set({
-        fullName,
+        image,
         gender,
         phoneNumber,
         department,

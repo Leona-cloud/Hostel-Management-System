@@ -26,6 +26,9 @@ const studentSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
     },
+    image: {
+        type: String,
+    },
     matricNo: {
         type: String,
         unique: true
