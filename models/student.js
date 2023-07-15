@@ -26,12 +26,15 @@ const studentSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
     },
-    image: {
+    studentImage: {
         type: String,
     },
     matricNo: {
         type: String,
         unique: true
+    },
+    clearanceCertificate: {
+        type: String
     },
     department: {
         type: String    

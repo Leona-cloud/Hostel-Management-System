@@ -1,7 +1,7 @@
 const Student = require("../../models/student");
 const successResponse = require("../../responses/success-response");
 const errorResponse = require("../../responses/error-response");
-const { studentRegistrationCompletion } = require('../../schemas/register');
+const uploadImage = require('../../utils/uploadImage')
 
 const completeStudentRegistration = async (req, res) => {
 
@@ -14,7 +14,6 @@ const completeStudentRegistration = async (req, res) => {
   if (!student) return errorResponse(400, res, "Student does not exist");
 
   const {
-    image,
     gender,
     phoneNumber,
     department,
@@ -22,11 +21,13 @@ const completeStudentRegistration = async (req, res) => {
     nextOfKinPhoneNumber,
   } = req.body;
 
+
+ 
+
   if( phoneNumber === nextOfKinPhoneNumber) return errorResponse(400, res,'Please use a different number for your next of kin' )
 
   try {
     await student.updateOne({ id: authenticatedUser.id }).set({
-        image,
         gender,
         phoneNumber,
         department,
