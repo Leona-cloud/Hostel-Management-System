@@ -1,4 +1,5 @@
 const express = require('express');
+const uploader = require('../utils/multer')
 const router = express.Router();
 const wardenAuth = require('../middlewares/warden-auth');
 const studentAuth = require('../middlewares/student-auth');
@@ -10,6 +11,8 @@ const wardenRegistrationCompletion = require('../controllers/wardens/complete-re
 const studentRegister = require('../controllers/students/register');
 const completeStudentRegistration = require('../controllers/students/complete-registration');
 const studentLogin = require('../controllers/students/login');
+const uploadPicture = require('../controllers/students/uploadPicture');
+const uploadCertificate = require('../controllers/students/uploadCertificate')
 
 
 
@@ -23,6 +26,8 @@ router.post('/warden/update-reg', wardenAuth, wardenRegistrationCompletion );
 router.post('/student/register', studentRegister);
 router.post('/student/update-details', studentAuth, completeStudentRegistration);
 router.post('/student/login', studentLogin);
+router.post('/student/upload-image', [studentAuth, uploader.single('file')], uploadPicture)
+router.post('/student/upload-certificate', [studentAuth, uploader.single('file')], uploadCertificate)
 
 
 
