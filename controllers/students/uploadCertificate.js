@@ -1,8 +1,7 @@
 const Student = require("../../models/student");
 const successResponse = require("../../responses/success-response");
 const errorResponse = require("../../responses/error-response");
-const uploadImage = require('../../utils/uploadImage');
-const path = require('path')
+
 
 
 const uploadCertificate = async(req, res)=>{
@@ -16,15 +15,10 @@ const uploadCertificate = async(req, res)=>{
 
    try {
 
-    console.log(req.file)
-    const publicId = student.fullName+'Clearance'
-    const uploadImageSuccess = await uploadImage(req.file.path, publicId);
-    if(!uploadImageSuccess){
-      console.log('something went wrong -image upload')
-    };
-
+      const { file } = req.body
+   
     await student.updateOne({ id: authenticatedUser.id }).set({
-        clearanceCertificate: uploadImageSuccess.public_id
+        clearanceCertificate: file
       });
 
       console.log('certificate-upload successful', uploadImageSuccess)
