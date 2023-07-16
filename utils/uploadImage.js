@@ -11,7 +11,7 @@ const uploadImage = async (image, fullname) => {
         const result = cloudinary.uploader.upload(`${image}`, { public_id: `${fullname}` })
         return result
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 };
 

@@ -1,7 +1,8 @@
 const Student = require("../../models/student");
 const successResponse = require("../../responses/success-response");
 const errorResponse = require("../../responses/error-response");
-const uploadImage = require('../../utils/uploadImage')
+const uploadImage = require('../../utils/uploadImage');
+const path = require('path')
 
 
 const uploadCertificate = async(req, res)=>{
@@ -12,19 +13,20 @@ const uploadCertificate = async(req, res)=>{
     const student = await Student.findOne({ _id: authenticatedUser.id });
     if (!student) return errorResponse(400, res, "Student does not exist");
 
-    const { file } = req.body;
+    console.log(req.file.path)
 
    try {
-    const publicId = student.fullName+'Clearance'
-    const uploadImageSuccess = await uploadImage(req.file.path, publicId);
-    if(!uploadImageSuccess){
-      console.log('something went wrong -image upload')
-    };
+    // const publicId = student.fullName+'Clearance'
+    // const uploadImageSuccess = await uploadImage(req.file.path, publicId);
+    // if(!uploadImageSuccess){
+    //   console.log('something went wrong -image upload')
+    // };
 
-    await student.updateOne({ id: authenticatedUser.id }).set({
-        clearanceCertificate: uploadImageSuccess.public_id
-      });
+    // await student.updateOne({ id: authenticatedUser.id }).set({
+    //     clearanceCertificate: uploadImageSuccess.public_id
+    //   });
 
+      console.log('certificate-upload successful', uploadImageSuccess)
       return successResponse('Student image uploaded successfuly', res, {})
    } catch (error) {
         console.log(error.message);
