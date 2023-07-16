@@ -15,6 +15,8 @@ const uploadCertificate = async(req, res)=>{
 
 
    try {
+
+    console.log(req.file)
     const publicId = student.fullName+'Clearance'
     const uploadImageSuccess = await uploadImage(req.file.path, publicId);
     if(!uploadImageSuccess){
