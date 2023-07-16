@@ -12,7 +12,6 @@ const uploadCertificate = async(req, res)=>{
     const student = await Student.findOne({ _id: authenticatedUser.id });
     if (!student) return errorResponse(400, res, "Student does not exist");
 
-
    try {
 
       const { file } = req.body
@@ -21,7 +20,7 @@ const uploadCertificate = async(req, res)=>{
         clearanceCertificate: file
       });
 
-      console.log('certificate-upload successful', uploadImageSuccess)
+      console.log('certificate-upload successful')
       return successResponse('Student image uploaded successfuly', res, {})
    } catch (error) {
         console.log(error.message);
