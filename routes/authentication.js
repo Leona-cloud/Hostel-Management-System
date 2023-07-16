@@ -1,5 +1,7 @@
 const express = require('express');
-const uploader = require('../utils/multer')
+const multer = require('multer')
+const storage = require('../utils/multer')
+var upload = multer({storage: storage })
 const router = express.Router();
 const wardenAuth = require('../middlewares/warden-auth');
 const studentAuth = require('../middlewares/student-auth');
@@ -26,8 +28,8 @@ router.post('/warden/update-reg', wardenAuth, wardenRegistrationCompletion );
 router.post('/student/register', studentRegister);
 router.post('/student/update-details', studentAuth, completeStudentRegistration);
 router.post('/student/login', studentLogin);
-router.post('/student/upload-image', [studentAuth, uploader.single('file')], uploadPicture)
-router.post('/student/upload-certificate', [studentAuth, uploader.single('file')], uploadCertificate)
+router.post('/student/upload-image', [studentAuth, upload.single('file')], uploadPicture)
+router.post('/student/upload-certificate', [studentAuth, upload.single('file')], uploadCertificate)
 
 
 
