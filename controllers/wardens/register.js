@@ -4,16 +4,7 @@ const bcrypt = require('bcrypt');
 const _ = require('lodash');
 const jwtToken = require('../../utils/jwtToken');
 
-
-
-
-
 const wardenRegister =  async(req, res)=>{
-
-    const { error } = signUpSchema(req.body);
-    if (error) {
-        return res.status(400).json({ message: [error.message.split(". ")] });
-    };
 
     let warden = await Warden.findOne({ email: req.body.email });
     if(warden) return res.status(400).json({
@@ -21,13 +12,11 @@ const wardenRegister =  async(req, res)=>{
         message: "User with this email already registered",
     }); 
 
-    warden = new Warden (_.pick(req.body, ['email', 'password', 'confirmPassword']));
+    warden = new Warden (_.pick(req.body, ['email', 'password']));
 
     try {
-
         const salt = await bcrypt.genSalt(10);
         warden.password = await bcrypt.hash(warden.password, salt);
-        warden.confirmPassword = await bcrypt.hash(warden.confirmPassword, salt);
 
         const result = await warden.save();
         console.log(result, 'warden registration');
