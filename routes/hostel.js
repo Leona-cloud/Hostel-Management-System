@@ -15,7 +15,7 @@ const viewNoticeBoard = require('../controllers/hostel/view-notice-Board');
 
 router.post('/create', wardenAuth, createHostel);
 router.post('/create-rooms', createRooms);
-router.get('/fetch-hostels', fetchHostels);
+router.post('/fetch-hostels', fetchHostels);
 router.get('/fetch-rooms', fetchRooms);
 router.post('/setup-hostel', studentAuth, setupHostel);
 router.post('/make-payment', studentAuth, makePayment)
