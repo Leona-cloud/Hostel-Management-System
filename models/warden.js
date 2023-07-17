@@ -26,6 +26,10 @@ const wardenSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
     },
+    hostelId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hostel'
+    },
 });
 
 
