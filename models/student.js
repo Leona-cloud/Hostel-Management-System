@@ -26,6 +26,10 @@ const studentSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
     },
+    accountVerified: {
+        type: Boolean,
+        default: false
+    },
     studentImage: {
         type: String,
     },
@@ -61,7 +65,7 @@ const studentSchema = new mongoose.Schema({
         default: false
     }
 
-});
+}, {timestamps: true});
 
 
 
