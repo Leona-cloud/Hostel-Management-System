@@ -11,12 +11,13 @@ const setupHostel = async (req, res) => {
 
     //create endpoiont to fetch hostels based on gender
     const { hostelId, block, roomNumber } = req.body;
+    console.log(req.body, 'body')
 
     try {
           //check if hostel && room exists
     const roomExists = await Room.findOne({
-        hostelId,
-        block,
+        hostelId: hostelId,
+        block: block,
         roomId: roomNumber,
     });
     console.log(roomExists)
