@@ -19,6 +19,7 @@ const setupHostel = async (req, res) => {
         block,
         roomId: roomNumber,
     });
+    console.log(roomExists)
     if (!roomExists)
         return errorResponse(400, res, "The room selected does not exist");
     //if room exists
