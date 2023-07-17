@@ -3,7 +3,7 @@ const successResponse = require("../../responses/success-response");
 const errorResponse = require("../../responses/error-response");
 
 const createRooms = async (req, res) => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  const alphabet = "ABCDE".split("");
 
   const { hostelId } = req.body;
   try {
