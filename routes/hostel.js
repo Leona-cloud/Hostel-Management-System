@@ -17,7 +17,7 @@ const addNewRoom = require('../controllers/hostel/add-new-room')
 router.post('/create', wardenAuth, createHostel);
 router.post('/create-rooms', createRooms);
 router.post('/fetch-hostels', fetchHostels);
-router.get('/fetch-rooms', fetchRooms);
+router.post('/fetch-rooms', fetchRooms);
 router.post('/setup-hostel', studentAuth, setupHostel);
 router.post('/make-payment', studentAuth, makePayment)
 router.post('/update-notice-board', wardenAuth, updateNoticeBoard)
