@@ -3,7 +3,7 @@ const successResponse = require('../../responses/success-response');
 
 const fetchRooms = async (req, res)=>{
 
-    const {hostelId, page, block} = req.body;
+    const {hostelId, page} = req.body;
 
     try {
         const pageSize = 20;
@@ -17,7 +17,7 @@ const fetchRooms = async (req, res)=>{
         const pagination = pageNumber * pageSize;
         console.log(pagination)
     
-        const rooms = await Room.find({hostelId, block}).limit(pageSize).skip(pagination);
+        const rooms = await Room.find({hostelId: hostelId}).limit(pageSize).skip(pagination);
     
         return successResponse('rooms fetched successfully', res, {rooms}) 
     } catch (error) {
