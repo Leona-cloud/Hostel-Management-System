@@ -10,7 +10,7 @@ try {
     
     const hostels = await Hostel.find({gender}).select('-wardenId');
 
-    return successResponse('Hostels fetched successfully', res, {hostels});
+    return successResponse('Hostels fetched successfully', res, hostels);
 } catch (error) {
     console.log("hostel-fetching-error:", error.message);
     return errorResponse(500, res, 'Something went wrong-hostel fetching')
