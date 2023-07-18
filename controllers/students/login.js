@@ -8,7 +8,7 @@ const studentLogin = async(req, res)=>{
 
     const { email, password } = req.body;
 
-    const studentExists = await Student.findOne({email});
+    const studentExists = await Student.findOne({email})
     if(!studentExists) return errorResponse(400, res, 'Invalid email or password');
 
     try {
@@ -19,7 +19,21 @@ const studentLogin = async(req, res)=>{
 
         const accessToken = await jwtToken(process.env.jwtSecret, {id});
 
-        return successResponse('user logged in successfully', res, {accessToken})
+        return res.status(200).json({
+            success: true,
+            message: 'Student logged in successfully',
+            data: {
+                student:{
+                    email: studentExists.email,
+                    fullName: studentExists.fullName,
+                    matricNo: studentExists.matricNo,
+                    clearanceCertificate: studentExists.clearanceCertificate,
+                    hostelId: studentExists.hostelId,
+                    gender: studentExists.gender
+                },
+                accessToken
+            }
+        });
 
     } catch (error) {
         console.log("student-login-error:", error.message);
