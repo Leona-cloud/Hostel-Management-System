@@ -1,12 +1,8 @@
 const Student = require("../../models/student");
 const successResponse = require("../../responses/success-response");
 const errorResponse = require("../../responses/error-response");
-const uploadImage = require('../../utils/uploadImage')
 
 const completeStudentRegistration = async (req, res) => {
-
-    const { error } = studentRegistrationCompletion(req.body);
-    if (error) return errorResponse(400, res,  [error.message.split(". ")])
 
   const authenticatedUser = req.user;
 
@@ -22,8 +18,6 @@ const completeStudentRegistration = async (req, res) => {
     nextOfKinPhoneNumber,
   } = req.body;
 
-
- 
 
   if( phoneNumber === nextOfKinPhoneNumber) return errorResponse(400, res,'Please use a different number for your next of kin' )
 
