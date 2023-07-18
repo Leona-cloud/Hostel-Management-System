@@ -29,7 +29,9 @@ const studentLogin = async(req, res)=>{
                     matricNo: studentExists.matricNo,
                     clearanceCertificate: studentExists.clearanceCertificate,
                     hostelId: studentExists.hostelId,
-                    gender: studentExists.gender
+                    gender: studentExists.gender,
+                    image: studentExists.studentImage,
+                    department: studentExists.department
                 },
                 accessToken
             }
