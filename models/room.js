@@ -16,7 +16,7 @@ const roomSchema = new mongoose.Schema({
         type: Array,
         default: []
     }
-});
+}, {timestamps: true});
 
 
 const Room = mongoose.model('Room', roomSchema);

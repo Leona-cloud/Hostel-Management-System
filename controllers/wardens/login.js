@@ -19,7 +19,10 @@ const wardenLogin = async(req, res)=>{
 
         const accessToken = await jwtToken(process.env.jwtSecret, {id});
 
-        return successResponse('user logged in successfully', res, {accessToken})
+        return successResponse('user logged in successfully', res, {warden: {
+            email: wardenExists.email,
+            hostelId: wardenExists.hostelId,
+        }, accessToken})
 
     } catch (error) {
         console.log("Warden-login-error:", error.message);
