@@ -3,10 +3,9 @@ const successResponse = require('../../responses/success-response');
 
 const fetchRooms = async (req, res)=>{
 
-    const {hostelId, page} = req.body;
+    const {hostelId, page, pageSize} = req.body;
 
     try {
-        const pageSize = 20;
         let pageNumber;
         if(page === undefined){
             pageNumber = 0;
