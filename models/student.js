@@ -65,7 +65,7 @@ const studentSchema = new mongoose.Schema({
         default: false
     },
     status: {
-        type: Boolean,
+        type: String,
         default: 'pending',
         enum: ['pending', 'checked-in']
     },
