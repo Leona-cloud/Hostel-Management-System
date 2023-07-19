@@ -63,7 +63,12 @@ const studentSchema = new mongoose.Schema({
     paymentVerified: {
         type: Boolean,
         default: false
-    }
+    },
+    status: {
+        type: Boolean,
+        default: 'pending',
+        enum: ['pending', 'checked-in']
+    },
 
 }, {timestamps: true});
 
