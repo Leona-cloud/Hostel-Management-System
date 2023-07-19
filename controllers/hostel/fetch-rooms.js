@@ -1,5 +1,6 @@
 const Room = require('../../models/room');
 const successResponse = require('../../responses/success-response');
+const errorResponse = require('../../responses/error-response')
 
 const fetchRooms = async (req, res)=>{
 
