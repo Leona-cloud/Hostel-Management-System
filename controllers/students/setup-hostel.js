@@ -8,7 +8,6 @@ const setupHostel = async (req, res) => {
 
     const student = await Student.findOne({ _id: authenticatedUser.id }).select(['-password'])
     if (!student) return errorResponse(400, res, "Student does not exist");
-    if(student.hostelId !== "") return errorResponse(400, res, "Student already booked a room");
 
     //create endpoiont to fetch hostels based on gender
     const { hostelId, block, roomNumber } = req.body;
