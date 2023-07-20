@@ -2,12 +2,15 @@ const Student = require("../../models/student");
 const Room = require("../../models/room");
 const successResponse = require("../../responses/success-response");
 const errorResponse = require("../../responses/error-response");
+const _ = require('lodash')
 
 const setupHostel = async (req, res) => {
     const authenticatedUser = req.user;
 
     const student = await Student.findOne({ _id: authenticatedUser.id }).select(['-password'])
     if (!student) return errorResponse(400, res, "Student does not exist");
+   
+    if(student.hostelId === "  ") return errorResponse(400, res, "Room already exists");
 
     //create endpoiont to fetch hostels based on gender
     const { hostelId, block, roomNumber } = req.body;
@@ -42,7 +45,7 @@ const setupHostel = async (req, res) => {
     else {
          roomExists.occupants.push(`${req.user.id}`);
          roomExists.save()
-        await student.updateOne({id: student.id}).set({roomId: roomExists.id, hostelId, block, roomNumber});
+        await student.updateOne({_id: student.id}).set({roomId: roomExists.id, hostelId, block, roomNumber});
     };
 
     return successResponse('Student details updated successfuly', res, {roomExists, student})
