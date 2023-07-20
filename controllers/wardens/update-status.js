@@ -6,9 +6,9 @@ const errorResponse = require('../../responses/error-response');
 
 const UpdateStatus = async(req, res)=>{
 
-    const authenticatedUser = req.user
     
-    const { status, email } = req.body
+    
+    const { email } = req.body
 
     try {
 
@@ -19,7 +19,7 @@ const UpdateStatus = async(req, res)=>{
         });
 
         await studentExists.updateOne({_id: studentExists.id}).set({
-            status: status
+            status: "checked-in"
         })
 
         
