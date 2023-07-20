@@ -6,7 +6,7 @@ const errorResponse = require("../../responses/error-response");
 const setupHostel = async (req, res) => {
     const authenticatedUser = req.user;
 
-    const student = await Student.findOne({ _id: authenticatedUser.id });
+    const student = await Student.findOne({ _id: authenticatedUser.id }).select(['-password'])
     if (!student) return errorResponse(400, res, "Student does not exist");
 
     //create endpoiont to fetch hostels based on gender
@@ -45,7 +45,7 @@ const setupHostel = async (req, res) => {
         await student.updateOne({id: student.id}).set({roomId: roomExists.id, hostelId, block, roomNumber});
     };
 
-    return successResponse('Student details updated successfuly', res, {roomExists})
+    return successResponse('Student details updated successfuly', res, {roomExists, student})
     } catch (error) {
         console.log(error.message);
         return errorResponse(500, res, 'Student setUp-hostel failed')
