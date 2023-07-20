@@ -28,4 +28,8 @@ const UpdateStatus = async(req, res)=>{
         return errorResponse(500, res, 'Student verified successfully')
     }
 
-}
+};
+
+
+
+module.exports = UpdateStatus

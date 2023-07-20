@@ -14,7 +14,9 @@ const viewNoticeBoard = require('../controllers/hostel/view-notice-Board');
 const addNewRoom = require('../controllers/hostel/add-new-room');
 const fetchHostelID = require('../controllers/hostel/fetch-hostelId')
 const lodgeComplaints = require('../controllers/students/lodge-complaints');
-const fetchStudents = require('../controllers/students/fetch-students')
+const fetchStudents = require('../controllers/students/fetch-students');
+const VerifyStudent = require('../controllers/wardens/verify-student');
+const UpdateStatus = require('../controllers/wardens/update-status')
 
 router.post('/create', wardenAuth, createHostel);
 router.post('/create-rooms', createRooms);
@@ -28,6 +30,8 @@ router.post('/add-new-room', wardenAuth, addNewRoom);
 router.post('/fetch-hostelId', fetchHostelID);
 router.post('/lodge-complaints', studentAuth, lodgeComplaints);
 router.post('/fetch-students', wardenAuth, fetchStudents)
+router.post('/verify-certificate', wardenAuth, VerifyStudent)
+router.post('/update-status', wardenAuth, UpdateStatus)
 
 
 
