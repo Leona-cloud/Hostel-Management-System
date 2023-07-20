@@ -8,7 +8,7 @@ const UpdateStatus = async(req, res)=>{
 
     
     
-    const { email } = req.body
+    const { email, status } = req.body
 
     try {
 
@@ -19,7 +19,7 @@ const UpdateStatus = async(req, res)=>{
         });
 
         await studentExists.updateOne({_id: studentExists.id}).set({
-            status: "checked-in"
+            status: status
         })
 
         
