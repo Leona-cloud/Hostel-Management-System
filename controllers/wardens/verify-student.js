@@ -16,7 +16,7 @@ const VerifyStudent = async(req, res)=>{
     });
 
     try {
-        const studentExists = await Student.findOne({email: email})
+        const studentExists = await Student.findOne({email: email}).select(['-password'])
         if(!studentExists)return res.status(400).json({
             success: false,
             message: "Student does not exist"
@@ -25,7 +25,7 @@ const VerifyStudent = async(req, res)=>{
         return res.status(200).json({
             success: true,
             message: 'student details fetched successfully',
-            data: {clearanceCertificate: studentExists.clearanceCertificate}
+            studentExists 
         })
 
     } catch (error) {
