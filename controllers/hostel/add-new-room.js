@@ -13,6 +13,9 @@ const addNewRoom  = async(req, res)=>{
     const {roomNumber, block} = req.body
 
     try {
+
+    const roomExists = await Room.findOne({hostelId: wardenExists.hostelId, roomId: roomNumber, block: block})
+    if(roomExists) return errorResponse(400, res, 'Room already exists')
         
     const newRoom = await Room.create({
         roomId: roomNumber,
