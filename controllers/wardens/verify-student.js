@@ -9,7 +9,8 @@ const VerifyStudent = async(req, res)=>{
 
     const {email} = req.body
 
-    const wardenExists = await Warden.findOne({_id: authenticatedUser.id});
+    const wardenExists = await Warden.findOne({_id: authenticatedUser._id});
+    console.log(wardenExists)
     if(!wardenExists) return res.status(400).json({
         success: false,
         message: "Access forbidden"
