@@ -1,6 +1,6 @@
 const Student = require('../../models/student');
 const Complaint = require('../../models/complaints');
-
+const errorResponse = require('../../responses/error-response');
 
 
 const lodgeComplaints = async(req, res)=>{
@@ -19,14 +19,18 @@ const lodgeComplaints = async(req, res)=>{
         const complaint = await Complaint.create({
             title: title,
             body: body,
-            studentId: studentExists.id
+            studentId: studentExists.id,
+            studentMatricNo: studentExists.matricNo,
+            roomNo: studentExists.roomNumber,
+           
         });
 
         return res.status(200).json({
             success: true,
             message: 'Student logged in successfully',
             data: {
-               complaint
+                block: studentExists.block,
+               complaint,
             }
         });
     } catch (error) {
@@ -35,7 +39,6 @@ const lodgeComplaints = async(req, res)=>{
     }
 
 };
-
 
 
 

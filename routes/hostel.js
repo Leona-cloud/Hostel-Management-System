@@ -16,7 +16,8 @@ const fetchHostelID = require('../controllers/hostel/fetch-hostelId')
 const lodgeComplaints = require('../controllers/students/lodge-complaints');
 const fetchStudents = require('../controllers/students/fetch-students');
 const VerifyStudent = require('../controllers/wardens/verify-student');
-const UpdateStatus = require('../controllers/wardens/update-status')
+const UpdateStatus = require('../controllers/wardens/update-status');
+const viewComplaints = require('../controllers/wardens/view-complaints');
 
 router.post('/create', wardenAuth, createHostel);
 router.post('/create-rooms', createRooms);
@@ -32,7 +33,7 @@ router.post('/lodge-complaints', studentAuth, lodgeComplaints);
 router.post('/fetch-students', wardenAuth, fetchStudents)
 router.post('/verify-certificate', wardenAuth, VerifyStudent)
 router.post('/update-status', wardenAuth, UpdateStatus)
-
+router.post('/view-complaints', wardenAuth, viewComplaints)
 
 
 

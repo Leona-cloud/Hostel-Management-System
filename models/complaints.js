@@ -15,6 +15,14 @@ const complaintsSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    studentMatricNo: {
+        type: String,
+        required: true
+    },
+    roomNo: {
+        type: Number,
+        required: true
+    },
     studentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'student'
