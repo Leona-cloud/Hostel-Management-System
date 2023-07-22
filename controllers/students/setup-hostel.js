@@ -12,7 +12,7 @@ const setupHostel = async (req, res) => {
   ]);
   if (!student) return errorResponse(400, res, "Student does not exist");
 
-  if (student.hostelId !== null){
+  if (student.hostelId !== undefined){
     console.log(student.hostelId, "Check if empty");
     return errorResponse(400, res, "Student booked a room already");
   }
