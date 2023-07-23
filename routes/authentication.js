@@ -12,13 +12,17 @@ const studentRegister = require('../controllers/students/register');
 const completeStudentRegistration = require('../controllers/students/complete-registration');
 const studentLogin = require('../controllers/students/login');
 const uploadPicture = require('../controllers/students/uploadPicture');
-const uploadCertificate = require('../controllers/students/uploadCertificate')
+const uploadCertificate = require('../controllers/students/uploadCertificate');
+const dsaRegister = require('../controllers/wardens/dsa-register');
+const dsaLogin = require('../controllers/wardens/dsa-login');
 
 
 
 //WARDEN
 router.post('/warden/register', wardenRegister);
 router.post('/warden/login', wardenLogin);
+router.post('/dsa/register', dsaRegister)
+router.post('/dsa/login', dsaLogin)
 
 
 //STUDENT
@@ -26,7 +30,7 @@ router.post('/student/register', studentRegister);
 router.post('/student/update-details', studentAuth, completeStudentRegistration);
 router.post('/student/login', studentLogin);
 router.post('/student/upload-image', [studentAuth, upload.single('file')], uploadPicture)
-router.post('/student/upload-certificate', studentAuth, uploadCertificate)
+router.post('/student/upload-certificate', studentAuth, uploadCertificate);
 
 
 
