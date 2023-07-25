@@ -11,7 +11,7 @@ const dsaRegister =  async(req, res)=>{
         message: "User with this email already registered",
     }); 
 
-    dsa = new DSA (_.pick(req.body, ['email', 'password']));
+    dsa = new DSA (_.pick(req.body, ['email', 'password', 'hostelId']));
 
     try {
         const salt = await bcrypt.genSalt(10);

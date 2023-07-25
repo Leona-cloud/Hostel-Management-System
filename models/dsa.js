@@ -17,11 +17,9 @@ const dsaSchema = new mongoose.Schema({
         symbol: 1,
         requirementCount: 4
     }),
-    firstName: {
-        type: String,
-    },
-    lastName: {
-        type: String,
+    hostelId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hostel'
     },
  
 });
