@@ -23,7 +23,7 @@ const generateReport = async(req, res)=>{
         const countRooms = await Room.count({hostelId: hostelId});
         const roomReport = await Room.find({hostelId: hostelId}).limit(pageSize).skip(pagination);
         return res.status(200).json({
-            success: false,
+            success: true,
             message: 'Report generated successfully',
             data: {
                 noOfStudents: countStudents,
