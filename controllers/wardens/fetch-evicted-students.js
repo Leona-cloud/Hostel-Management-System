@@ -9,7 +9,7 @@ const fetchEvictedStudents = async(req, res)=>{
     const {hostelId} = req.body
 
     try {
-        const evictedStudents = await Evicted({hostelId: hostelId});
+        const evictedStudents = await Evicted.find({hostelId: hostelId});
         const countEvicted = await Evicted.count({hostelId: hostelId});
         return res.status(200).json({
             success: false,
