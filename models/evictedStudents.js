@@ -31,8 +31,10 @@ const evictedStudentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-   
-   
+    hostelId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hostel'
+    },
     status: {
         type: String,
         default: 'evicted'

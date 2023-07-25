@@ -32,6 +32,7 @@ const evictStudent = async (req, res) => {
       matricNo: student.matricNo,
       reasonForEviction: reason,
       department: student.department,
+      hostelId: student.hostelId
     });
     const removeOccupant = roomExists.occupants.filter((id) => {
       return id !== `${student.id}`;
