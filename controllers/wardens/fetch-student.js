@@ -5,7 +5,8 @@ const errorResponse = require('../../responses/error-response')
 
 const fetchAStudent = async(req, res)=>{
 
-    const {email} = req.body
+    const email = req.params.email
+
 
 
     try {
