@@ -37,7 +37,7 @@ router.post('/verify-certificate', wardenAuth, VerifyStudent)
 router.post('/update-status', wardenAuth, UpdateStatus)
 router.post('/view-complaints', wardenAuth, viewComplaints)
 router.post('/evict-student', wardenAuth, evictStudent)
-router.post('/fetch-student', fetchAStudent);
+router.get('/fetch-student', fetchAStudent);
 
 
 
