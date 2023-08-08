@@ -19,6 +19,7 @@ const VerifyStudent = require('../controllers/wardens/verify-student');
 const UpdateStatus = require('../controllers/wardens/update-status');
 const viewComplaints = require('../controllers/wardens/view-complaints');
 const evictStudent = require('../controllers/wardens/evict-student');
+const fetchAStudent = require('../controllers/wardens/fetch-student');
 
 router.post('/create', wardenAuth, createHostel);
 router.post('/create-rooms', createRooms);
@@ -36,7 +37,7 @@ router.post('/verify-certificate', wardenAuth, VerifyStudent)
 router.post('/update-status', wardenAuth, UpdateStatus)
 router.post('/view-complaints', wardenAuth, viewComplaints)
 router.post('/evict-student', wardenAuth, evictStudent)
-
+router.post('/fetch-student', fetchAStudent);
 
 
 
