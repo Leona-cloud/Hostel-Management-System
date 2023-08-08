@@ -5,16 +5,8 @@ const errorResponse = require('../../responses/error-response')
 
 const fetchAStudent = async(req, res)=>{
 
-    const authenticatedUser = req.user
-
     const {email} = req.body
 
-    const wardenExists = await Warden.findOne({_id: authenticatedUser.id});
-    console.log(wardenExists)
-    if(!wardenExists) return res.status(400).json({
-        success: false,
-        message: "Access forbidden"
-    });
 
     try {
         const studentExists = await Student.findOne({email: email}).select(['-password'])
