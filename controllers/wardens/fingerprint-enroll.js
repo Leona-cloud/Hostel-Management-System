@@ -1,7 +1,7 @@
 const FingerPrint = require("../../models/fingerPrint");
 const Student = require("../../models/student");
 const errorResponse = require("../../responses/error-response");
-const { Buffer } = require('node:buffer')
+
 
 const enrollFingerPrint = async (req, res) => {
   const email = req.query.email;
