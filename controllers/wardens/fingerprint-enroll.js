@@ -4,8 +4,8 @@ const errorResponse = require("../../responses/error-response");
 
 
 const enrollFingerPrint = async (req, res) => {
-  const email = req.query.email;
-  const { fp } = req.body;
+
+  const { fp, email } = req.body;
   
 
 const encode = Buffer.from(fp, 'binary').toString('base64');

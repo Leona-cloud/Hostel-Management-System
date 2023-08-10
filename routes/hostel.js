@@ -22,6 +22,7 @@ const evictStudent = require('../controllers/wardens/evict-student');
 const fetchAStudent = require('../controllers/wardens/fetch-student');
 const enrollFingerPrint = require('../controllers/wardens/fingerprint-enroll');
 const getFingerPrint = require('../controllers/wardens/get-fingerprint');
+const enrollFingerPrintSuccess = require('../controllers/wardens/fingerprint-enroll-successfull');
 
 router.post('/create', wardenAuth, createHostel);
 router.post('/create-rooms', createRooms);
@@ -40,7 +41,7 @@ router.post('/update-status', wardenAuth, UpdateStatus)
 router.post('/view-complaints', wardenAuth, viewComplaints)
 router.post('/evict-student', wardenAuth, evictStudent)
 router.get('/fetch-student', fetchAStudent);
-router.post('/enroll-fingerPrint', enrollFingerPrint);
+router.post('/enroll-fingerPrint-success', enrollFingerPrintSuccess);
 router.post('/get-fingerPrint', getFingerPrint);
 
 
