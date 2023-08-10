@@ -41,7 +41,7 @@ router.post('/update-status', wardenAuth, UpdateStatus)
 router.post('/view-complaints', wardenAuth, viewComplaints)
 router.post('/evict-student', wardenAuth, evictStudent)
 router.get('/fetch-student', fetchAStudent);
-router.post('/enroll-fingerPrint-success', enrollFingerPrintSuccess);
+router.get('/enroll-fingerPrint-success', enrollFingerPrintSuccess);
 router.post('/get-fingerPrint', getFingerPrint);
 
 
